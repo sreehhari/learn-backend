@@ -3,8 +3,32 @@ const prisma = new PrismaClient();
 
 
 async function main(){
-    const allUsers = await prisma.user.findMany();
-    console.log(allUsers);
+   await prisma.user.create({
+    data:{
+        name:"akhil ennen",
+        email:"chunni@gmail.com",
+        posts:{
+            create:{
+                title:"hello world"
+            },
+        },
+        profile:{
+            create:{
+                bio:"i like turtles"
+            },
+        },
+    },
+   })
+
+
+   const allUsers = await prisma.user.findMany({
+    include:{
+        posts:true,
+        profile:true,
+    },
+   })
+
+   console.dir(allUsers,{depth:null})
 }
 
 
