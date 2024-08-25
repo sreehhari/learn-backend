@@ -20,6 +20,6 @@ const client = new PrismaClient();
 }
     //store the body in the db
     return NextResponse.json({
-        message:"you are logged in"
+        message:"you are logged in",
     })
 }
